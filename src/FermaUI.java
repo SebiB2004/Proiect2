@@ -57,21 +57,16 @@ public class Ferma implements ActionListener {
         login.addActionListener(new Ferma());
 
         succes = new JLabel("");
-        succes.setBounds(80,150, 500,80);
+        succes.setBounds(170,200, 500,80);
         panel.add(succes);
 
 
         frame.setVisible(true);
 
 
-
-
-
-    /* Angajat ingrijitor = new Ingrijitor("Ion", "ingrijitor");
-
-    ingrijitor.getFunctie();
+        Angajat ingrijitor = new Ingrijitor("Ion", "ingrijitor");
     System.out.println("Autoritatea este " + ingrijitor.getAutoritate());
-*/
+
 
     }
 
@@ -79,8 +74,13 @@ public class Ferma implements ActionListener {
     public void actionPerformed(ActionEvent e) {
    String util = intUtil.getText();
    String pass = intPass.getText();
-        if(utilizator.equals("Sebi") && parola.equals("salut")){
-            succes.setText("Autentificare cu succes!");
+        if(util.equalsIgnoreCase("Ingrijitor") && pass.equals("ingrijitor123")){
+            utilizator.setVisible(false);
+            parola.setVisible(false);
+            intUtil.setVisible(false);
+            intPass.setVisible(false);
+            login.setVisible(false);
+            titlu.setText("Bun venit, " + util + "!");
         } else {
             succes.setText("Datele de autentificare sunt gresite.");
         }
