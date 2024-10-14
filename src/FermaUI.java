@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Ferma implements ActionListener {
+public class FermaUI implements ActionListener {
 
     private static JPanel panel;
     private static JFrame frame;
@@ -14,8 +14,15 @@ public class Ferma implements ActionListener {
     private static JButton login;
     private static JLabel titlu;
     private static JLabel succes;
+    private static JPanel panelLogin;
 
-    public static void main(String[] args) {
+    public FermaUI(){
+        initalizareUI();
+    }
+
+
+
+    public void initalizareUI (){
 
         panel = new JPanel();
 
@@ -28,44 +35,37 @@ public class Ferma implements ActionListener {
         frame.add(panel);
         panel.setLayout(null);
 
+        panelLogin = new JPanel();
+        panelLogin.setBounds(10, 40, 400, 200);
+        panelLogin.setLayout(new GridLayout(3, 2, 10, 10));
+        panel.add(panelLogin);
+
         titlu = new JLabel("Bun venit in aplicatia de gestionare a firmei NORD SRL");
         titlu.setFont(new Font("Georgia", Font.BOLD, 15) );
         titlu.setBounds(10, 10, 500, 25);
         panel.add(titlu);
 
+
         utilizator = new JLabel("Utilizator");
-        utilizator.setBounds(10, 40, 80, 25);
         utilizator.setFont(new Font("Arial", Font.BOLD, 15));
-        panel.add(utilizator);
+        panelLogin.add(utilizator);
 
         parola = new JLabel("Parola");
-        parola.setBounds(10, 80, 80, 25);
         parola.setFont(new Font("Arial", Font.BOLD, 15));
-        panel.add(parola);
+        panelLogin.add(parola);
 
         intUtil = new JTextField();
-        intUtil.setBounds(100, 40, 80, 25);
-        panel.add(intUtil);
+        panelLogin.add(intUtil);
 
         intPass = new JPasswordField();
-        intPass.setBounds(100, 80, 80, 25);
-        panel.add(intPass);
+        panelLogin.add(intPass);
 
         login = new JButton("Login");
-        login.setBounds(10, 120, 80,50);
-        panel.add(login);
-        login.addActionListener(new Ferma());
+        panelLogin.add(login);
+        login.addActionListener(this);
 
         succes = new JLabel("");
-        succes.setBounds(170,200, 500,80);
-        panel.add(succes);
-
-
         frame.setVisible(true);
-
-
-        Angajat ingrijitor = new Ingrijitor("Ion", "ingrijitor");
-    System.out.println("Autoritatea este " + ingrijitor.getAutoritate());
 
 
     }
@@ -75,15 +75,14 @@ public class Ferma implements ActionListener {
    String util = intUtil.getText();
    String pass = intPass.getText();
         if(util.equalsIgnoreCase("Ingrijitor") && pass.equals("ingrijitor123")){
-            utilizator.setVisible(false);
-            parola.setVisible(false);
-            intUtil.setVisible(false);
-            intPass.setVisible(false);
-            login.setVisible(false);
+            panelLogin.setVisible(false);
             titlu.setText("Bun venit, " + util + "!");
         } else {
             succes.setText("Datele de autentificare sunt gresite.");
         }
+
+    }
+    public static void instantiereAngajat(){
 
     }
 }
