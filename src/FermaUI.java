@@ -37,7 +37,7 @@ public class FermaUI implements ActionListener {
 
         panelLogin = new JPanel();
         panelLogin.setBounds(10, 40, 400, 200);
-        panelLogin.setLayout(new GridLayout(3, 2, 10, 10));
+        panelLogin.setLayout(new GridLayout(3, 3, 10, 10));
         panel.add(panelLogin);
 
         titlu = new JLabel("Bun venit in aplicatia de gestionare a firmei NORD SRL");
@@ -67,6 +67,8 @@ public class FermaUI implements ActionListener {
         succes = new JLabel("");
         frame.setVisible(true);
 
+        Manager manager = new Manager("Gigel", "manager");
+        System.out.println(manager.getAutoritate());
 
     }
 
@@ -77,12 +79,17 @@ public class FermaUI implements ActionListener {
         if(util.equalsIgnoreCase("Ingrijitor") && pass.equals("ingrijitor123")){
             panelLogin.setVisible(false);
             titlu.setText("Bun venit, " + util + "!");
-        } else {
+        }
+         if(util.equalsIgnoreCase("Manager") && pass.equals("manager123")){
+             panelLogin.setVisible(false);
+             titlu.setText("Bun venit, " + util + "!");
+         }
+        else {
             succes.setText("Datele de autentificare sunt gresite.");
         }
 
     }
     public static void instantiereAngajat(){
-
+    Manager manager = new Manager("Gigel" ,"Manager");
     }
 }
