@@ -5,7 +5,7 @@ public class Manager extends Angajat {
 
 
     public Manager(String nume, String functie){
-        super(functie);
+        super(nume, functie);
         this.nume = nume;
         setAutoritate("Medium");
     }
