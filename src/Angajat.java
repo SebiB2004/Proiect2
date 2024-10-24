@@ -21,8 +21,9 @@ public class Angajat {
         return this.nume;
     }
 
-    public void getFunctie(){
-        System.out.println("Functia angajatului este " + this.functie);
+    public String getFunctie(){
+
+        return this.functie;
     }
 
     public void setAutoritate(String autoritate){
