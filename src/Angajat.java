@@ -34,7 +34,4 @@ public class Angajat {
         return this.autoritate;
     }
 
-    public static String[] getListaAngajati(){
-      return listaAngajati;
-    }
 }
